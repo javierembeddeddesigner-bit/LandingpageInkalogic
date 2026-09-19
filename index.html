@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IncaLogic — Los primeros PLCs peruanos | MMJ Smart Electronics</title>
+<meta name="description" content="IncaLogic: los primeros PLCs peruanos, desarrollados por MMJ Smart Electronics. Un ecosistema de 10 controladores y más de 40 módulos de expansión para la automatización industrial. Agenda una reunión." />
+
+<meta property="og:title" content="IncaLogic — Los primeros PLCs peruanos" />
+<meta property="og:description" content="Un ecosistema peruano de automatización industrial: 10 controladores y más de 40 módulos de expansión. Agenda una reunión con MMJ Smart Electronics." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ink: #14181f;
+    --ink-soft: #3a4150;
+    --muted: #6b7280;
+    --line: #e7e5e1;
+    --bg: #ffffff;
+    --bg-warm: #faf8f5;
+    --bg-dark: #14181f;
+    --copper: #b06a3b;
+    --copper-deep: #8f5028;
+    --copper-soft: #f3e7dc;
+    --radius: 14px;
+    --maxw: 1120px;
+    --shadow: 0 1px 2px rgba(20,24,31,.04), 0 12px 32px -12px rgba(20,24,31,.14);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Space Grotesk", "Inter", sans-serif; line-height: 1.12; letter-spacing: -0.02em; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-weight: 600; font-size: 15px;
+    padding: 14px 22px; border-radius: 999px;
+    border: 1px solid transparent; cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+    white-space: nowrap;
+  }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn-primary { background: var(--copper); color: #fff; box-shadow: 0 8px 20px -8px rgba(176,106,59,.6); }
+  .btn-primary:hover { background: var(--copper-deep); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { background: var(--bg-warm); }
+  .btn-lg { padding: 17px 28px; font-size: 16px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(255,255,255,.82);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 9px; flex: none;
+    background: var(--bg-dark);
+    display: grid; place-items: center;
+  }
+  .brand-mark svg { width: 20px; height: 20px; }
+  .brand-name { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
+  .brand-sub { display: block; font-family: "Inter", sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .02em; margin-top: -2px; }
+  .nav-cta { display: flex; }
+
+  /* Hero */
+  .hero { padding: 92px 0 74px; position: relative; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(600px 300px at 88% -5%, rgba(176,106,59,.10), transparent 60%),
+      radial-gradient(500px 260px at 5% 10%, rgba(20,24,31,.04), transparent 60%);
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--copper-deep); background: var(--copper-soft);
+    padding: 7px 14px; border-radius: 999px; margin-bottom: 24px;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--copper); }
+  .hero h1 { font-size: clamp(38px, 6vw, 64px); font-weight: 700; max-width: 15ch; }
+  .hero h1 .accent { color: var(--copper); }
+  .hero-lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--ink-soft); max-width: 56ch; margin-top: 22px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .hero-note { font-size: 14px; color: var(--muted); margin-top: 16px; display: flex; align-items: center; gap: 8px; }
+  .hero-note svg { width: 15px; height: 15px; color: var(--copper); }
+
+  /* Stats */
+  .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-warm); }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .stat { padding: 40px 24px; text-align: center; border-right: 1px solid var(--line); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: "Space Grotesk", sans-serif; font-size: clamp(34px, 5vw, 48px); font-weight: 700; color: var(--ink); letter-spacing: -0.03em; }
+  .stat-num .plus { color: var(--copper); }
+  .stat-label { font-size: 14px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+
+  /* Section shell */
+  section.block { padding: 84px 0; }
+  .section-head { max-width: 60ch; margin-bottom: 48px; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; }
+  .section-head p { color: var(--ink-soft); font-size: 18px; margin-top: 16px; }
+  .kicker { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--copper-deep); margin-bottom: 14px; }
+
+  /* Features */
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 30px 28px; transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #dcd8d2; }
+  .card-icon {
+    width: 46px; height: 46px; border-radius: 11px; display: grid; place-items: center;
+    background: var(--copper-soft); color: var(--copper-deep); margin-bottom: 20px;
+  }
+  .card-icon svg { width: 23px; height: 23px; }
+  .card h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+  .card p { color: var(--ink-soft); font-size: 15.5px; }
+
+  /* Ecosystem strip */
+  .eco { background: var(--bg-dark); color: #fff; border-radius: 20px; padding: 56px 48px; }
+  .eco-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+  .eco h2 { color: #fff; font-size: clamp(26px, 3.4vw, 36px); }
+  .eco p { color: #b9bfca; font-size: 17px; margin-top: 16px; }
+  .eco-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .eco-list li { display: flex; gap: 13px; align-items: flex-start; color: #dfe3e9; font-size: 15.5px; }
+  .eco-list svg { width: 21px; height: 21px; color: var(--copper); flex: none; margin-top: 1px; }
+
+  /* Final CTA */
+  .cta-final { text-align: center; padding: 96px 0; }
+  .cta-final h2 { font-size: clamp(30px, 4.5vw, 46px); font-weight: 700; max-width: 18ch; margin: 0 auto; }
+  .cta-final p { color: var(--ink-soft); font-size: 18px; margin: 18px auto 34px; max-width: 52ch; }
+  .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 44px 0; background: var(--bg-warm); }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .foot-brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 16px; }
+  .foot-meta { color: var(--muted); font-size: 14px; }
+  .foot-links { display: flex; gap: 22px; font-size: 14px; color: var(--ink-soft); font-weight: 500; }
+  .foot-links a:hover { color: var(--copper-deep); }
+
+  @media (max-width: 860px) {
+    .eco-inner { grid-template-columns: 1fr; gap: 32px; }
+    .eco { padding: 44px 30px; }
+  }
+  @media (max-width: 720px) {
+    .features { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--line); }
+    .stat:last-child { border-bottom: none; }
+    .nav-cta .btn span { display: none; }
+    .hero { padding: 64px 0 54px; }
+    section.block { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="IncaLogic, inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <!-- circuit / logic mark -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#b06a3b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 8h5M4 16h5M15 8h5M15 16h5"/>
+          <rect x="9" y="5" width="6" height="14" rx="1.5" stroke="#faf8f5"/>
+          <circle cx="12" cy="9" r="1" fill="#b06a3b" stroke="none"/>
+          <circle cx="12" cy="15" r="1" fill="#faf8f5" stroke="none"/>
+        </svg>
+      </span>
+      <span>
+        <span class="brand-name">IncaLogic</span>
+        <span class="brand-sub">by MMJ Smart Electronics</span>
+      </span>
+    </a>
+    <div class="nav-cta">
+      <a class="btn btn-primary js-schedule" href="#agendar">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.33 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm0 18.05h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.03-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
+        Agendar reunión
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>Los primeros PLCs peruanos</span>
+      <h1>Automatización industrial <span class="accent">diseñada y fabricada en Perú.</span></h1>
+      <p class="hero-lead">
+        IncaLogic es el primer PLC peruano: un ecosistema completo de controladores y módulos de
+        expansión, respaldado por ingeniería y soporte local de MMJ Smart Electronics.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg js-schedule" href="#agendar">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.33 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm4.52 11.89c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
+          Agendar una reunión
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#ecosistema">Ver el ecosistema</a>
+      </div>
+      <p class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Respuesta directa por WhatsApp — sin formularios.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="El ecosistema IncaLogic en cifras">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">1<span class="plus">°</span></div>
+          <div class="stat-label">PLC diseñado y fabricado en Perú</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10</div>
+          <div class="stat-label">Controladores núcleo</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">40<span class="plus">+</span></div>
+          <div class="stat-label">Módulos de expansión</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="block wrap" id="producto">
+    <div class="section-head">
+      <div class="kicker">Por qué IncaLogic</div>
+      <h2>Un ecosistema pensado para la industria, con respaldo local.</h2>
+      <p>Controladores robustos y módulos que crecen con tu planta — sin las esperas ni los costos de importar tecnología cerrada del exterior.</p>
+    </div>
+    <div class="features">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+        </div>
+        <h3>10 controladores núcleo</h3>
+        <p>Una familia de PLCs para distintos niveles de exigencia: desde máquinas compactas hasta procesos de planta completos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        </div>
+        <h3>+40 módulos de expansión</h3>
+        <p>Entradas y salidas digitales, analógicas, comunicación y control especializado. Escala exactamente lo que tu aplicación necesita.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Ingeniería y soporte peruano</h3>
+        <p>Hablas directamente con quienes diseñaron el equipo. Soporte cercano, en tu idioma y en tu zona horaria.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM STRIP -->
+  <section class="block wrap" id="ecosistema" style="padding-top:0;">
+    <div class="eco">
+      <div class="eco-inner">
+        <div>
+          <div class="kicker" style="color:var(--copper);">El ecosistema IncaLogic</div>
+          <h2>Un solo sistema, de la máquina compacta a la planta completa.</h2>
+          <p>Combina cualquiera de nuestros 10 controladores con más de 40 módulos para armar la solución exacta de tu proceso — con una plataforma coherente y escalable.</p>
+        </div>
+        <ul class="eco-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Núcleos escalables para cada nivel de exigencia industrial.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Módulos de E/S digital, analógica y comunicación industrial.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Repuestos y stock local: menos tiempos de espera.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Acompañamiento técnico directo del equipo de diseño.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-final" id="agendar">
+    <div class="wrap">
+      <div class="kicker" style="text-align:center;">Conversemos</div>
+      <h2>Agenda una reunión con el equipo de IncaLogic.</h2>
+      <p>Cuéntanos sobre tu proceso y te mostramos cómo el ecosistema IncaLogic se ajusta a tu aplicación. Sin compromiso.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary btn-lg js-schedule" href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.33 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm4.52 11.89c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="foot-brand">IncaLogic</div>
+      <div class="foot-meta">MMJ Smart Electronics · Perú 🇵🇪</div>
+    </div>
+    <div class="foot-links">
+      <a href="#producto">Producto</a>
+      <a href="#ecosistema">Ecosistema</a>
+      <a href="#agendar" class="js-schedule">Agendar reunión</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:22px; color:var(--muted); font-size:13px;">
+    © <span id="year"></span> MMJ Smart Electronics. Todos los derechos reservados.
+  </div>
+</footer>
+
+<script>
+  /* ============================================================
+     CONFIGURACIÓN — edita solo estas dos líneas
+     ============================================================ */
+  // Número de WhatsApp en formato internacional, SIN "+", SIN espacios.
+  // Ejemplo para Perú: "51987654321"  (51 = código de país)
+  const WHATSAPP_NUMERO = "51999999999";
+
+  // Mensaje que aparecerá pre-escrito cuando el cliente abra el chat.
+  const WHATSAPP_MENSAJE = "Hola MMJ Smart Electronics, me interesa IncaLogic y quisiera agendar una reunión.";
+  /* ============================================================ */
+
+  const enlaceWhatsApp = "https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent(WHATSAPP_MENSAJE);
+  document.querySelectorAll(".js-schedule").forEach(function (el) {
+    el.setAttribute("href", enlaceWhatsApp);
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
