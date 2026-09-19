@@ -90,7 +90,7 @@
   .brand-mark svg { width: 21px; height: 21px; }
   .brand-name { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
   .brand-sub { display: block; font-family: "Inter", sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .02em; margin-top: -2px; }
-  .nav-links { display: flex; gap: 26px; font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
+  .nav-links { display: flex; gap: 19px; font-size: 14px; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
   .nav-links a:hover { color: var(--crimson); }
   .nav-right { display: flex; align-items: center; gap: 18px; }
 
@@ -154,7 +154,9 @@
   .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
   .section-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; }
   .section-head p { color: var(--ink-soft); font-size: 18px; margin-top: 16px; }
-  .kicker { font-size: 13px; font-weight: 700; letter-spacing: .02em; color: var(--teal-deep); margin-bottom: 14px; }
+  .kicker { display: inline-flex; align-items: center; gap: 11px; font-size: 14.5px; font-weight: 700; letter-spacing: .01em; color: var(--teal-deep); margin-bottom: 16px; }
+  .kicker::before { content: ""; width: 28px; height: 3px; border-radius: 999px; background: currentColor; flex: none; }
+  .section-head.center .kicker { justify-content: center; }
   .kicker.crimson { color: var(--crimson); }
 
   /* ============ CONECTIVIDAD / IoT ============ */
@@ -631,6 +633,39 @@
     .scale-note { flex-direction: column; text-align: center; }
   }
 
+  /* ============ CREADOR / MANIFIESTO TECNOLOGÍA NACIONAL ============ */
+  .founder { background: linear-gradient(180deg, var(--bg-warm), var(--bg)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .founder-inner { display: grid; grid-template-columns: .82fr 1.18fr; gap: 50px; align-items: center; }
+  .founder-photo { position: relative; width: 100%; max-width: 360px; margin: 0 auto; }
+  .founder-photo::before { content: ""; position: absolute; inset: -14px -14px 18px 18px; border-radius: 24px; z-index: 0;
+    background: linear-gradient(150deg, var(--crimson), var(--teal)); opacity: .16; }
+  .founder-photo img { position: relative; z-index: 1; width: 100%; border-radius: 20px; display: block;
+    border: 1px solid var(--line); box-shadow: var(--shadow); }
+  .founder-badge { position: absolute; z-index: 2; bottom: 16px; left: 50%; transform: translateX(-50%);
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    background: var(--crimson); color: #fff; font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 999px;
+    box-shadow: 0 10px 24px -10px rgba(196,11,42,.7); }
+  .founder-badge svg { width: 15px; height: 15px; }
+  .founder-copy h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; }
+  .founder-copy h2 .accent { color: var(--crimson); }
+  .founder-quote { position: relative; font-family: "Space Grotesk", sans-serif; font-weight: 500;
+    font-size: clamp(19px, 2.5vw, 24px); line-height: 1.44; color: var(--ink); margin: 22px 0 26px; padding-left: 26px; }
+  .founder-quote::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 4px; border-radius: 999px;
+    background: linear-gradient(180deg, var(--crimson), var(--teal)); }
+  .founder-quote b { font-weight: 700; }
+  .founder-id { border-top: 1px solid var(--line); padding-top: 22px; }
+  .founder-id .fname { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 21px; color: var(--ink); }
+  .founder-id .frole { color: var(--teal-deep); font-weight: 600; font-size: 14.5px; margin-top: 5px; }
+  .founder-bio { color: var(--ink-soft); font-size: 15px; margin-top: 14px; max-width: 62ch; }
+  .founder-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .founder-tags span { font-size: 12.5px; font-weight: 600; color: var(--teal-deep); background: var(--teal-soft);
+    border: 1px solid #cfe4e7; padding: 6px 12px; border-radius: 999px; }
+  .founder-tags span.crimson { color: var(--crimson-deep); background: var(--crimson-soft); border-color: #f4cdd4; }
+  @media (max-width: 860px) {
+    .founder-inner { grid-template-columns: 1fr; gap: 34px; }
+    .founder-photo { max-width: 300px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * { scroll-behavior: auto; transition: none !important; animation: none !important; }
   }
@@ -648,11 +683,12 @@
       </span>
     </a>
     <nav class="nav-links" aria-label="Secciones">
-      <a href="#modelos">Modelos</a>
       <a href="#conectividad">Conectividad</a>
+      <a href="#pantallas">Pantallas</a>
+      <a href="#es">Entradas / Salidas</a>
+      <a href="#alimentacion">Alimentación</a>
       <a href="#incabus">InkaBUS</a>
-      <a href="#aplicaciones">Aplicaciones</a>
-      <a href="#sectores">Sectores</a>
+      <a href="#modelos">Modelos</a>
     </nav>
     <div class="nav-right">
       <a class="btn btn-primary js-schedule" href="#agendar">
@@ -1478,6 +1514,35 @@
     </div>
   </section>
 
+  <!-- CREADOR / MANIFIESTO -->
+  <section class="founder block" id="creador">
+    <div class="wrap founder-inner">
+      <div class="founder-photo">
+        <img src="assets/javier-hernandez.webp" alt="Javier Hernández, Ingeniero Electrónico, CEO de MMJ Smart Electronics y creador de InkaLogic" width="400" height="400" loading="lazy" decoding="async" />
+        <span class="founder-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.2 5.6.6-4.2 3.8 1.2 5.6L12 19.6 7 16.8l1.2-5.6L4 7.4l5.6-.6z"/></svg>Creador de InkaLogic</span>
+      </div>
+      <div class="founder-copy">
+        <div class="kicker crimson">El creador del ecosistema</div>
+        <h2>La tecnología de nivel mundial <span class="accent">también se diseña aquí.</span></h2>
+        <p class="founder-quote">"Creé InkaLogic con una convicción: <b>un país que diseña su propia tecnología deja de depender y empieza a decidir.</b> Durante años la automatización industrial llegó como una caja cerrada que solo se importaba; nosotros decidimos abrirla y construirla desde cero. Cada controlador, cada módulo InkaBus y cada línea de firmware es <b>ingeniería nacional</b> —diseñada, fabricada y soportada localmente— para que nuestra industria tenga tecnología propia, robusta y de clase mundial. Seguimos desarrollando, y seguiremos apostando por el talento y la tecnología de nuestra tierra."</p>
+        <div class="founder-id">
+          <div class="fname">Javier Hernández</div>
+          <div class="frole">Ingeniero Electrónico · CEO de MMJ Smart Electronics · Arquitecto de Software certificado por National Instruments</div>
+          <p class="founder-bio">Más de 8 años diseñando sistemas embebidos y soluciones tecnológicas a medida: control y automatización, Industria 4.0, electrónica médica y sistemas de misión crítica para los sectores militar y aeroespacial. Transforma requerimientos técnicos complejos en productos robustos, escalables y eficientes para la industria de hoy.</p>
+          <div class="founder-tags">
+            <span>Diseño de Hardware</span>
+            <span>IoT</span>
+            <span>Firmware embebido</span>
+            <span>Software</span>
+            <span>Industria 4.0</span>
+            <span class="crimson">Electrónica médica</span>
+            <span class="crimson">Misión crítica · aeroespacial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FINAL CTA -->
   <section class="cta-final" id="agendar">
     <div class="wrap">
@@ -1512,6 +1577,7 @@
       <a href="#integracion">Integración</a>
       <a href="#escalable">Nube y plataformas</a>
       <a href="#sectores">Sectores</a>
+      <a href="#creador">Creador</a>
       <a href="#agendar" class="js-schedule">Agendar reunión</a>
     </div>
   </div>
