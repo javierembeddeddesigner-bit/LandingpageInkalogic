@@ -535,6 +535,102 @@
     .hero .wrap { padding: 66px 24px 58px; }
     .flow-node { width: 62px; }
   }
+  /* ============ MARCA / LOGOTIPO MMJ ============ */
+  .brand-mark-img { height: 34px; width: auto; display: block; }
+  .foot-brandwrap { max-width: 360px; }
+  .foot-logo { height: 42px; width: auto; display: block; margin-bottom: 12px; }
+
+  /* ============ REALCE DE PALABRAS CLAVE (marcador) ============ */
+  .hl  { background-image: linear-gradient(180deg, transparent 58%, rgba(29,121,136,.26) 58%); }
+  .hl-c { background-image: linear-gradient(180deg, transparent 58%, rgba(196,11,42,.20) 58%); }
+  .on-dark .hl  { background-image: linear-gradient(180deg, transparent 56%, rgba(74,148,160,.48) 56%); }
+  .on-dark .hl-c { background-image: linear-gradient(180deg, transparent 56%, rgba(208,60,85,.5) 56%); }
+
+  /* ============ BOTÓN PRIMARIO — brillo + press ============ */
+  .btn-primary { position: relative; overflow: hidden; }
+  .btn-primary > svg, .btn-primary > span { position: relative; z-index: 1; }
+  .btn-primary::after {
+    content: ""; position: absolute; top: 0; left: -130%; width: 55%; height: 100%; z-index: 0;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.4), transparent);
+    transform: skewX(-18deg); transition: left .6s ease; pointer-events: none;
+  }
+  .btn-primary:hover::after { left: 150%; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(196,11,42,.72); }
+  .btn-primary:active { transform: translateY(0) scale(.98); }
+
+  /* pulso del CTA final: dirige la vista a la única meta */
+  @keyframes cta-ring {
+    0%   { box-shadow: 0 10px 24px -10px rgba(196,11,42,.65), 0 0 0 0 rgba(196,11,42,.5); }
+    70%  { box-shadow: 0 10px 24px -10px rgba(196,11,42,.65), 0 0 0 18px rgba(196,11,42,0); }
+    100% { box-shadow: 0 10px 24px -10px rgba(196,11,42,.65), 0 0 0 0 rgba(196,11,42,0); }
+  }
+  .cta-pulse { animation: cta-ring 2.8s ease-out infinite; }
+
+  /* ============ HERO — chips de acceso (partes del ecosistema) ============ */
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: #dbe6e8;
+    background: rgba(29,121,136,.16); border: 1px solid rgba(74,148,160,.4);
+    padding: 8px 14px; border-radius: 10px;
+    transition: transform .16s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .hero-chip svg { width: 15px; height: 15px; color: var(--teal-2); transition: color .2s ease; }
+  .hero-chip:hover { transform: translateY(-2px); background: rgba(29,121,136,.3); border-color: var(--teal-2); color: #fff; }
+  .hero-chip:hover svg { color: #7fc3ce; }
+
+  /* ============ ESCALABILIDAD / SIN LÍMITES DE PLATAFORMA ============ */
+  .scale { background: linear-gradient(180deg, var(--bg) 0%, var(--teal-soft) 100%); border-top: 1px solid var(--line); }
+  .scale-hub {
+    background: var(--ink); border-radius: 22px; padding: 32px;
+    display: grid; grid-template-columns: minmax(190px, .82fr) 46px 1.5fr; gap: 20px; align-items: center;
+    box-shadow: var(--shadow); position: relative; overflow: hidden;
+  }
+  .scale-hub::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(420px 260px at 10% 16%, rgba(196,11,42,.18), transparent 60%),
+                radial-gradient(480px 320px at 100% 104%, rgba(29,121,136,.3), transparent 62%); }
+  .hub-core { position: relative; z-index: 1; background: linear-gradient(160deg, #1e2733, #12181f);
+    border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 26px 22px; text-align: center; }
+  .hub-core .ring { width: 64px; height: 64px; border-radius: 16px; margin: 0 auto 14px; display: grid; place-items: center;
+    background: rgba(196,11,42,.16); border: 1px solid rgba(208,60,85,.5); animation: live-pulse 2.6s ease-out infinite; }
+  .hub-core .ring svg { width: 31px; height: 31px; color: var(--crimson-2); }
+  .hub-core b { font-family: "Space Grotesk", sans-serif; color: #fff; font-size: 18px; display: block; }
+  .hub-core span { font-size: 12.5px; color: #9fb8bd; display: block; margin-top: 5px; }
+  .hub-rail { position: relative; z-index: 1; height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(127,195,206,.6) 0 7px, transparent 7px 13px);
+    background-size: 26px 2px; animation: flow-march 1.1s linear infinite; }
+  .hub-rail::after { content: ""; position: absolute; right: -1px; top: -3px; width: 8px; height: 8px;
+    border-top: 2px solid rgba(127,195,206,.85); border-right: 2px solid rgba(127,195,206,.85); transform: rotate(45deg); }
+  .hub-targets { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .hub-t { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 16px 12px; text-align: center;
+    transition: transform .16s ease, border-color .2s ease, background .2s ease; }
+  .hub-t:hover { transform: translateY(-3px); border-color: rgba(74,148,160,.6); background: rgba(255,255,255,.08); }
+  .hub-t .ic { width: 40px; height: 40px; border-radius: 11px; margin: 0 auto 10px; display: grid; place-items: center;
+    background: rgba(74,148,160,.16); border: 1px solid rgba(74,148,160,.35); color: #7fc3ce; }
+  .hub-t .ic svg { width: 21px; height: 21px; }
+  .hub-t b { font-family: "Space Grotesk", sans-serif; font-size: 13.5px; color: #fff; display: block; letter-spacing: -0.01em; }
+  .hub-t span { font-size: 11px; color: #9aa2ad; }
+  .scale-note { display: flex; align-items: center; gap: 15px; margin-top: 26px;
+    background: linear-gradient(120deg, var(--crimson-soft), #fff 72%); border: 1px solid #f4cdd4; border-radius: 14px; padding: 18px 22px; }
+  .scale-note .ic { width: 46px; height: 46px; border-radius: 12px; flex: none; display: grid; place-items: center; background: var(--crimson); color: #fff; }
+  .scale-note .ic svg { width: 24px; height: 24px; }
+  .scale-note b { font-family: "Space Grotesk", sans-serif; font-size: 16px; }
+  .scale-note p { color: var(--ink-soft); font-size: 14px; margin-top: 2px; }
+  @keyframes flow-march-v { to { background-position: 0 26px; } }
+  @media (max-width: 940px) {
+    .scale-hub { grid-template-columns: 1fr; gap: 16px; justify-items: center; }
+    .hub-core { width: 100%; max-width: 340px; }
+    .hub-targets { width: 100%; }
+    .hub-rail { height: 30px; width: 2px;
+      background: repeating-linear-gradient(180deg, rgba(127,195,206,.6) 0 7px, transparent 7px 13px);
+      background-size: 2px 26px; animation: flow-march-v 1.1s linear infinite; }
+    .hub-rail::after { right: auto; left: -3px; top: auto; bottom: -1px; transform: rotate(135deg); }
+  }
+  @media (max-width: 560px) {
+    .hub-targets { grid-template-columns: repeat(2, 1fr); }
+    .scale-note { flex-direction: column; text-align: center; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * { scroll-behavior: auto; transition: none !important; animation: none !important; }
   }
@@ -544,15 +640,8 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="InkaLogic, inicio">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#d03c55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 8h5M4 16h5M15 8h5M15 16h5"/>
-          <rect x="9" y="5" width="6" height="14" rx="1.5" stroke="#4a94a0"/>
-          <circle cx="12" cy="9" r="1" fill="#d03c55" stroke="none"/>
-          <circle cx="12" cy="15" r="1" fill="#4a94a0" stroke="none"/>
-        </svg>
-      </span>
+    <a class="brand" href="#top" aria-label="InkaLogic, un producto de MMJ Smart Electronics">
+      <img class="brand-mark-img" src="assets/mmj-mark-dark.png" alt="MMJ Smart Electronics" width="417" height="452" decoding="async" />
       <span>
         <span class="brand-name">InkaLogic</span>
         <span class="brand-sub">by MMJ Smart Electronics</span>
@@ -583,7 +672,7 @@
       <span class="eyebrow"><span class="dot"></span>Los primeros PLCs peruanos · diseñados y fabricados en Perú</span>
       <h1>Automatización industrial <span class="accent">conectada al IoT.</span></h1>
       <p class="hero-lead">
-        InkaLogic es el primer ecosistema de PLCs peruano: controladores robustos, expansión
+        InkaLogic es <span class="hl">el primer ecosistema de PLCs peruano</span>: controladores robustos, expansión
         plug and play con InkaBus y conectividad IoT de fábrica para monitorear y controlar
         tus procesos desde cualquier lugar. Ingeniería y soporte de MMJ Smart Electronics.
       </p>
@@ -594,12 +683,13 @@
         </a>
         <a class="btn btn-ghost btn-lg" href="#conectividad">Ver conectividad IoT</a>
       </div>
-      <div class="conn-row" aria-label="Conectividades soportadas">
-        <span class="conn-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M10 20V6M15 20v-8M20 20V4"/></svg>Celular 4G / 3G / GPRS / GSM</span>
-        <span class="conn-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a12 12 0 0 1 16 0M7 12.5a7 7 0 0 1 10 0"/><circle cx="12" cy="16.5" r="1.2" fill="currentColor" stroke="none"/></svg>LoRa / LoRaWAN</span>
-        <span class="conn-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a12 12 0 0 1 16 0M7 12.5a7 7 0 0 1 10 0"/><circle cx="12" cy="16.5" r="1.2" fill="currentColor" stroke="none"/></svg>Wi-Fi</span>
-        <span class="conn-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 8 10 8-5 4V4l5 4L7 16"/></svg>Bluetooth</span>
-        <span class="conn-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="16" height="6" rx="1"/><path d="M12 14V8M8 8h8M8 8V5M16 8V5"/></svg>Ethernet</span>
+      <div class="hero-chips" aria-label="Explora el ecosistema InkaLogic">
+        <a class="hero-chip" href="#conectividad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a12 12 0 0 1 16 0M7 12.5a7 7 0 0 1 10 0"/><circle cx="12" cy="16.5" r="1.2" fill="currentColor" stroke="none"/></svg>Conectividad IoT</a>
+        <a class="hero-chip" href="#protocolos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>Protocolos</a>
+        <a class="hero-chip" href="#pantallas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Pantallas HMI</a>
+        <a class="hero-chip" href="#es"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h11l-3-3M14 8l-3 3M21 16H10l3-3M10 16l3 3"/></svg>Entradas / Salidas</a>
+        <a class="hero-chip" href="#alimentacion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>Alimentación 9–24 V</a>
+        <a class="hero-chip" href="#incabus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M12 9v3M12 12H6v3M12 12h6v3"/></svg>Expansión InkaBUS</a>
       </div>
      </div>
      <div class="hero-3d">
@@ -642,7 +732,7 @@
       <div class="conn-lead">
         <div class="section-head" style="margin-bottom:0;">
           <div class="kicker">Conectividad · IoT · Telemetría</div>
-          <h2>Tus datos, del campo a la nube — sin depender de nadie más.</h2>
+          <h2>Tus datos, del campo a la nube — <span class="hl-c">sin depender de nadie más.</span></h2>
           <p>Cada controlador InkaLogic integra conectividad IoT de fábrica. Envía telemetría desde
             plantas, pozos, minas o parcelas remotas y recibe alertas y comandos en tiempo real,
             elijas la red que elijas.</p>
@@ -1054,6 +1144,13 @@
 
     <!-- Dashboards reales del software MMJ -->
     <div class="dash-real">
+      <figure class="shot" style="margin:0 0 22px;">
+        <div class="win" aria-label="Software de monitoreo ambiental desarrollado por MMJ Smart Electronics">
+          <div class="win-bar"><i></i><i></i><i></i><span>Software de monitoreo ambiental · MMJ Smart Electronics</span></div>
+          <img src="assets/monitoreo-ambiental.webp" alt="Software de monitoreo de calidad de aire en tiempo real: temperatura ambiental, SO2, PM2.5, ozono y CO2 con tendencias históricas" loading="lazy" decoding="async" />
+        </div>
+        <figcaption><b>Monitoreo de calidad de aire</b> — T. ambiental, SO₂, PM2.5, O₃ y CO₂ en tiempo real, con tendencias e histórico</figcaption>
+      </figure>
       <div class="win" aria-label="Dashboard web de monitoreo agrícola desarrollado por MMJ Smart Electronics">
         <div class="win-bar"><i></i><i></i><i></i><span>Plataforma InkaLogic · Monitoreo en la nube</span></div>
         <img src="assets/dash-agro-clima.webp" alt="Dashboard web: datos meteorológicos por zona (temperatura, viento, humedad, irradiancia)" loading="lazy" decoding="async" />
@@ -1071,6 +1168,62 @@
         </figure>
       </div>
       <p class="media-note">Dashboards reales desarrollados por MMJ Smart Electronics. Integramos tus datos con la plataforma web, nube o SCADA que prefieras.</p>
+    </div>
+  </section>
+
+  <!-- ESCALABILIDAD / SIN LÍMITES DE PLATAFORMA -->
+  <section class="scale block" id="escalable">
+    <div class="wrap">
+      <div class="section-head" style="max-width:64ch;">
+        <div class="kicker crimson">Escalable · Sin límites de plataforma</div>
+        <h2>Tus datos donde tú decidas, <span class="hl-c">sin candados de proveedor.</span></h2>
+        <p>InkaLogic se comunica con cualquier plataforma —cloud computing, los servidores de tus
+          clientes o tus bases de datos— <b>sin limitantes</b>. Un ecosistema <span class="hl">escalable</span>
+          que se adapta a la infraestructura que ya existe y crece contigo.</p>
+      </div>
+
+      <div class="scale-hub" aria-label="InkaLogic se conecta a cualquier plataforma o infraestructura">
+        <div class="hub-core">
+          <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div>
+          <b>InkaLogic</b>
+          <span>Tus datos, en tiempo real</span>
+        </div>
+        <div class="hub-rail" aria-hidden="true"></div>
+        <div class="hub-targets">
+          <div class="hub-t">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 9.4 4 4 0 0 0 7 17h10.5Z"/></svg></div>
+            <b>AWS</b><span>Amazon Web Services</span>
+          </div>
+          <div class="hub-t">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 9.4 4 4 0 0 0 7 17h10.5Z"/></svg></div>
+            <b>Microsoft Azure</b><span>Nube empresarial</span>
+          </div>
+          <div class="hub-t">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 9.4 4 4 0 0 0 7 17h10.5Z"/></svg></div>
+            <b>Google Cloud</b><span>y otras nubes</span>
+          </div>
+          <div class="hub-t">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></div>
+            <b>Servidores propios</b><span>On-premise del cliente</span>
+          </div>
+          <div class="hub-t">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+            <b>Bases de datos</b><span>SQL · NoSQL</span>
+          </div>
+          <div class="hub-t">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></div>
+            <b>Tu plataforma / API</b><span>Integración a medida</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scale-note">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V7a5 5 0 0 1 9.9-1"/><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M12 15v2"/></svg></div>
+        <div>
+          <b>No estás atado a ninguna nube ni proveedor.</b>
+          <p>Conectamos InkaLogic con la infraestructura que ya tienes —o con la que quieras construir— y escalamos contigo, de un nodo a miles.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1297,7 +1450,7 @@
   <section class="integral block" id="a-medida" style="padding-bottom:0;">
     <div class="wrap">
       <div class="bar" aria-hidden="true"></div>
-      <h2>¿Tu proyecto no encaja en un catálogo? Lo diseñamos contigo.</h2>
+      <h2>¿Tu proyecto no encaja en un catálogo? <span class="hl">Lo diseñamos contigo.</span></h2>
       <p>En MMJ Smart Electronics desarrollamos soluciones tecnológicas a medida para la industria.
         Gracias al ecosistema InkaLogic —controladores, InkaBus, conectividad y E/S— adaptamos
         rápidamente la plataforma a tu necesidad y te entregamos la solución integral: del sensor en
@@ -1332,7 +1485,7 @@
       <h2>Agenda una reunión con el equipo de InkaLogic.</h2>
       <p>Cuéntanos sobre tu proceso y te mostramos cómo el ecosistema —controladores, InkaBus y conectividad IoT— se ajusta a tu aplicación. Sin compromiso.</p>
       <div class="cta-actions">
-        <a class="btn btn-primary btn-lg js-schedule" href="#">
+        <a class="btn btn-primary btn-lg cta-pulse js-schedule" href="#">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.33 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm4.52 11.89c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
           Escríbenos por WhatsApp
         </a>
@@ -1344,9 +1497,9 @@
 
 <footer>
   <div class="wrap foot">
-    <div>
-      <div class="foot-brand">InkaLogic</div>
-      <div class="foot-meta">MMJ Smart Electronics · Perú 🇵🇪</div>
+    <div class="foot-brandwrap">
+      <img class="foot-logo" src="assets/mmj-logo-dark.png" alt="MMJ Smart Electronics" width="1910" height="466" decoding="async" />
+      <div class="foot-meta">InkaLogic · Los primeros PLCs peruanos · Perú 🇵🇪</div>
     </div>
     <div class="foot-links">
       <a href="#modelos">Modelos</a>
@@ -1357,6 +1510,7 @@
       <a href="#aplicaciones">Aplicaciones</a>
       <a href="#pantallas">Pantallas</a>
       <a href="#integracion">Integración</a>
+      <a href="#escalable">Nube y plataformas</a>
       <a href="#sectores">Sectores</a>
       <a href="#agendar" class="js-schedule">Agendar reunión</a>
     </div>

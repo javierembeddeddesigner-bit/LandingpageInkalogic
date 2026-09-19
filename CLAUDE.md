@@ -48,6 +48,11 @@ Ecosistema (franja oscura) → CTA final → Footer.
 ## Estado / pendientes
 
 - [x] Reemplazar el número de WhatsApp de ejemplo por el real (`51961188601`).
-- [ ] (Opcional) Logo real de MMJ en lugar del ícono SVG del header.
-- [ ] (Opcional) Foto real de un controlador IncaLogic en el hero.
+- [x] Logo real de MMJ en el header (chip mark) y footer (lockup completo).
+- [x] Foto real de un controlador InkaLogic en el hero.
+- [x] Sección "Escalabilidad · sin límites de plataforma" (Cloud/AWS/Azure/servidores/BD) — `#escalable`.
+- [x] Software real de monitoreo ambiental (calidad de aire) en la sección de monitoreo.
 - [ ] Desplegar (hosting por definir).
+
+Notas de assets del logo: `assets/mmj-mark-dark.png` (chip, header), `assets/mmj-logo-dark.png`
+(lockup, footer), + versiones `-white` para fondos oscuros. Derivados del logo enviado por el usuario.
