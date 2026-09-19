@@ -47,7 +47,7 @@ Ecosistema (franja oscura) → CTA final → Footer.
 
 ## Estado / pendientes
 
-- [ ] Reemplazar el número de WhatsApp de ejemplo (`51999999999`) por el real.
+- [x] Reemplazar el número de WhatsApp de ejemplo por el real (`51961188601`).
 - [ ] (Opcional) Logo real de MMJ en lugar del ícono SVG del header.
 - [ ] (Opcional) Foto real de un controlador IncaLogic en el hero.
 - [ ] Desplegar (hosting por definir).
