@@ -90,7 +90,7 @@
   .brand-mark svg { width: 21px; height: 21px; }
   .brand-name { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
   .brand-sub { display: block; font-family: "Inter", sans-serif; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .02em; margin-top: -2px; }
-  .nav-links { display: flex; gap: 19px; font-size: 14px; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
+  .nav-links { display: flex; gap: 16px; font-size: 13.5px; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
   .nav-links a:hover { color: var(--crimson); }
   .nav-right { display: flex; align-items: center; gap: 18px; }
 
@@ -155,7 +155,9 @@
   .section-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; }
   .section-head p { color: var(--ink-soft); font-size: 18px; margin-top: 16px; }
   .kicker { display: inline-flex; align-items: center; gap: 11px; font-size: 14.5px; font-weight: 700; letter-spacing: .01em; color: var(--teal-deep); margin-bottom: 16px; }
-  .kicker::before { content: ""; width: 28px; height: 3px; border-radius: 999px; background: currentColor; flex: none; }
+  .kicker::before { content: ""; width: 30px; height: 4px; border-radius: 999px; flex: none;
+    background: linear-gradient(90deg, var(--crimson), var(--teal)); background-size: 200% 100%; animation: kicker-shine 4s ease-in-out infinite; }
+  @keyframes kicker-shine { 0%,100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
   .section-head.center .kicker { justify-content: center; }
   .kicker.crimson { color: var(--crimson); }
 
@@ -543,10 +545,11 @@
   .foot-logo { height: 42px; width: auto; display: block; margin-bottom: 12px; }
 
   /* ============ REALCE DE PALABRAS CLAVE (marcador) ============ */
-  .hl  { background-image: linear-gradient(180deg, transparent 58%, rgba(29,121,136,.26) 58%); }
-  .hl-c { background-image: linear-gradient(180deg, transparent 58%, rgba(196,11,42,.20) 58%); }
-  .on-dark .hl  { background-image: linear-gradient(180deg, transparent 56%, rgba(74,148,160,.48) 56%); }
-  .on-dark .hl-c { background-image: linear-gradient(180deg, transparent 56%, rgba(208,60,85,.5) 56%); }
+  .hl, .hl-c { border-radius: .3em; padding: .04em .22em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .hl  { background-color: rgba(29,121,136,.24); }
+  .hl-c { background-color: rgba(196,11,42,.15); }
+  .on-dark .hl  { background-color: rgba(74,148,160,.44); color: #fff; }
+  .on-dark .hl-c { background-color: rgba(208,60,85,.52); color: #fff; }
 
   /* ============ BOTÓN PRIMARIO — brillo + press ============ */
   .btn-primary { position: relative; overflow: hidden; }
@@ -665,6 +668,35 @@
     .founder-inner { grid-template-columns: 1fr; gap: 34px; }
     .founder-photo { max-width: 300px; }
   }
+  .founder-adv { list-style: none; padding: 0; margin: 22px 0 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+  .founder-adv li { display: flex; gap: 11px; align-items: flex-start; font-size: 14.5px; color: var(--ink-soft); }
+  .founder-adv svg { width: 20px; height: 20px; color: var(--crimson); flex: none; margin-top: 2px; }
+  .founder-adv b { color: var(--ink); font-weight: 700; }
+  @media (max-width: 620px) { .founder-adv { grid-template-columns: 1fr; } }
+
+  /* ============ MÁS COLOR: tintes suaves + seguridad responsive ============ */
+  img, svg, video { max-width: 100%; }
+  html, body { overflow-x: hidden; }
+  #es { background: linear-gradient(180deg, var(--bg) 0%, var(--teal-soft) 118%); }
+  #capacidades { background: linear-gradient(180deg, var(--bg) 0%, var(--teal-soft) 130%); }
+  #aplicaciones { background: linear-gradient(180deg, var(--bg) 0%, var(--crimson-soft) 135%); }
+  @media (max-width: 720px) { .wrap { padding-left: 26px; padding-right: 26px; } }
+  @media (max-width: 380px) { .wrap { padding-left: 22px; padding-right: 22px; } }
+
+  /* entrada escalonada de los chips del hero (solo si el usuario acepta movimiento) */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-chips .hero-chip { opacity: 0; transform: translateY(10px); animation: chip-in .55s cubic-bezier(.2,.7,.3,1) forwards; }
+    .hero-chips .hero-chip:nth-child(1) { animation-delay: .05s; }
+    .hero-chips .hero-chip:nth-child(2) { animation-delay: .11s; }
+    .hero-chips .hero-chip:nth-child(3) { animation-delay: .17s; }
+    .hero-chips .hero-chip:nth-child(4) { animation-delay: .23s; }
+    .hero-chips .hero-chip:nth-child(5) { animation-delay: .29s; }
+    .hero-chips .hero-chip:nth-child(6) { animation-delay: .35s; }
+    .hero-chips .hero-chip:nth-child(7) { animation-delay: .41s; }
+    .hero-chips .hero-chip:nth-child(8) { animation-delay: .47s; }
+    .hero-chips .hero-chip:nth-child(9) { animation-delay: .53s; }
+  }
+  @keyframes chip-in { to { opacity: 1; transform: none; } }
 
   @media (prefers-reduced-motion: reduce) {
     * { scroll-behavior: auto; transition: none !important; animation: none !important; }
@@ -684,11 +716,12 @@
     </a>
     <nav class="nav-links" aria-label="Secciones">
       <a href="#conectividad">Conectividad</a>
+      <a href="#capacidades">Monitoreo</a>
       <a href="#pantallas">Pantallas</a>
-      <a href="#es">Entradas / Salidas</a>
+      <a href="#es">E/S</a>
       <a href="#alimentacion">Alimentación</a>
-      <a href="#incabus">InkaBUS</a>
-      <a href="#modelos">Modelos</a>
+      <a href="#aplicaciones">Aplicaciones</a>
+      <a href="#creador">Creador</a>
     </nav>
     <div class="nav-right">
       <a class="btn btn-primary js-schedule" href="#agendar">
@@ -726,6 +759,10 @@
         <a class="hero-chip" href="#es"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h11l-3-3M14 8l-3 3M21 16H10l3-3M10 16l3 3"/></svg>Entradas / Salidas</a>
         <a class="hero-chip" href="#alimentacion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>Alimentación 9–24 V</a>
         <a class="hero-chip" href="#incabus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M12 9v3M12 12H6v3M12 12h6v3"/></svg>Expansión InkaBUS</a>
+        <a class="hero-chip" href="#capacidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg>Monitoreo y control</a>
+        <a class="hero-chip" href="#modelos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Modelos</a>
+        <a class="hero-chip" href="#aplicaciones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>Aplicaciones</a>
+        <a class="hero-chip" href="#creador"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg>El creador</a>
       </div>
      </div>
      <div class="hero-3d">
@@ -1523,15 +1560,22 @@
       </div>
       <div class="founder-copy">
         <div class="kicker crimson">El creador del ecosistema</div>
-        <h2>La tecnología de nivel mundial <span class="accent">también se diseña aquí.</span></h2>
-        <p class="founder-quote">"Creé InkaLogic con una convicción: <b>un país que diseña su propia tecnología deja de depender y empieza a decidir.</b> Durante años la automatización industrial llegó como una caja cerrada que solo se importaba; nosotros decidimos abrirla y construirla desde cero. Cada controlador, cada módulo InkaBus y cada línea de firmware es <b>ingeniería nacional</b> —diseñada, fabricada y soportada localmente— para que nuestra industria tenga tecnología propia, robusta y de clase mundial. Seguimos desarrollando, y seguiremos apostando por el talento y la tecnología de nuestra tierra."</p>
+        <h2>En un mundo donde los datos son el activo más valioso, la conexión no es una opción: <span class="hl-c">es una necesidad.</span></h2>
+        <p class="founder-quote">"Creé InkaLogic con una convicción: <b>un país que diseña su propia tecnología deja de depender y empieza a decidir.</b> Hoy los datos, el <b>IoT</b> y la <b>inteligencia artificial</b> ya no son un lujo —son el motor que separa a una planta que reacciona de una que se adelanta. Por eso construimos un ecosistema 100% propio: hardware, firmware y <b>soluciones a medida</b>, diseñadas y soportadas localmente, que se adaptan exactamente a tu proceso y crecen contigo. Así estamos cambiando la forma en que la industria del <b>Perú y de toda Latinoamérica</b> se conecta, mide y decide —y seguimos apostando por el talento y la tecnología de nuestra tierra."</p>
+        <ul class="founder-adv">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Ecosistema 100% propio</b> — no dependes de tecnología importada ni de una sola marca.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>IoT + IA de fábrica</b> — del sensor a la decisión, en tiempo real.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Soluciones a medida</b> — adaptamos la plataforma a tu proceso, no al revés.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Ingeniería y soporte local</b> — hablas directo con quien diseñó el equipo.</span></li>
+        </ul>
         <div class="founder-id">
           <div class="fname">Javier Hernández</div>
           <div class="frole">Ingeniero Electrónico · CEO de MMJ Smart Electronics · Arquitecto de Software certificado por National Instruments</div>
           <p class="founder-bio">Más de 8 años diseñando sistemas embebidos y soluciones tecnológicas a medida: control y automatización, Industria 4.0, electrónica médica y sistemas de misión crítica para los sectores militar y aeroespacial. Transforma requerimientos técnicos complejos en productos robustos, escalables y eficientes para la industria de hoy.</p>
           <div class="founder-tags">
             <span>Diseño de Hardware</span>
-            <span>IoT</span>
+            <span class="crimson">IoT</span>
+            <span class="crimson">Inteligencia Artificial</span>
             <span>Firmware embebido</span>
             <span>Software</span>
             <span>Industria 4.0</span>
